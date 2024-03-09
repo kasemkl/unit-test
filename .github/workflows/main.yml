@@ -18,17 +18,7 @@ jobs:
         with:
           node-version: 10.2.1
 
-      - name: Clear npm cache and install dependencies
+      - name: Run npm install and tests
         run: |
-          npm cache clean --force
-          npm ci
-
-      - name: Cache Node Modules
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-
-      - name: Run tests
-        run: npm test
+          npm install
+          npm test
